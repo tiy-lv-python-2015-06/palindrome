@@ -1,0 +1,13 @@
+{
+  "name": "palindrome",
+  "version": "1.0.0",
+  "title": "Determine if text is palindromic",
+  "description": "Write a program that asks the user for one or more sentences and then lets the user know if it is a palindrome.",
+  "keywords": [
+    "basics",
+    "strings",
+    "recursion",
+    "functions",
+    "lists"
+  ]
+}

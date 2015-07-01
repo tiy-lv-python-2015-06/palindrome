@@ -5,34 +5,39 @@ import re
 #functions are self-sustaining code and shouldn't rely on anything outside
 #of themselves to do what they're supposed to do except what
 #arguments are passed to them
-
 def raw_sentence():
-    return input("\nGive me a sentence and I will tell you if it is a palindrome " )
+    """Returns exact user input"""
+    return input("\nGive me a sentence and I will tell you if it is a palindrome \n >" )
 
 def strip_sentence():
     """Gets user sentence, returns without spaces and punctuation"""
     #sentence = input("\nGive me a sentence and I will tell you if it is a palindrome " )
     return re.sub(r'[^A-Za-z]', "", raw_sentence().lower())
 
-print(strip_sentence())
+#print(strip_sentence())
+#stripped_sentence = strip_sentence()
+#print("first letter:")
+#print(stripped_sentence[0])
+#print("last letter:")
+#print(stripped_sentence[-1])
 
-def test_pal(sentence):
-    """Returns if palindrome given stripped sentence"""
-    palindrome_answer = False
-    length = len(sentence)
-    index = 0
-    count = length / 2
-    while count > 0
-        if sentence[front_index] == sentence[back_index]:
-            #add 1 to the front_index and -1 to the back index and
-            
-            print("{} is a palindrome".format(sentence))
-        if sentence[(0 + index)] == sentence[(index - 1)]:
-            print("{} is a palindrome".format(sentence))
-            palindrome_answer = True
+def overall_loop():
+    counter = (len(stripped_sentence))-1
+    index = 1
+    palindrome(counter, index)
+
+def palindrome(counter, index):
+    """Given length of stripped_sentence checks to see if palindrome"""
+    if counter > 0:
+        if stripped_sentence[index] != stripped_sentence[-(index+1)]:
+            print("That is not a palindrome")
         else:
+        #stripped_sentence[index] == stripped_sentence[-(index+1)]:
+            palindrome(counter-1, index+1)
+            print(index)
+            print(stripped_sentence[-(index+1)])
+            print(stripped_sentence[(index)])
+            print("That is a palindrome")
 
-    #compare first index of the list to the last index of the list
-    #if they are the same then compare the first+1 to the last-1
-    #
-    return palindrome_answer
+stripped_sentence = strip_sentence()
+overall_loop()

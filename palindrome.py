@@ -2,42 +2,32 @@
 #then lets the user know if it is a palindrome.
 import re
 
-#functions are self-sustaining code and shouldn't rely on anything outside
-#of themselves to do what they're supposed to do except what
-#arguments are passed to them
 def raw_sentence():
     """Returns exact user input"""
     return input("\nGive me a sentence and I will tell you if it is a palindrome \n >" )
 
-def strip_sentence():
+
+def strip_sentence(raw_sentence):
     """Gets user sentence, returns without spaces and punctuation"""
-    #sentence = input("\nGive me a sentence and I will tell you if it is a palindrome " )
-    return re.sub(r'[^A-Za-z]', "", raw_sentence().lower())
+    stripped_sentence = re.sub(r'[^A-Za-z]', "", raw_sentence.lower())
+    return stripped_sentence
 
-#print(strip_sentence())
-#stripped_sentence = strip_sentence()
-#print("first letter:")
-#print(stripped_sentence[0])
-#print("last letter:")
-#print(stripped_sentence[-1])
+def is_palindrome(stripped_sentence):
+   if (stripped_sentence):
+      if (stripped_sentence[0] == stripped_sentence[-1]):
+         result = is_palindrome(stripped_sentence[1:-1])
+         print(stripped_sentence[1:-1])
+         print("is a palindrome")
+         if result:
+            return True
+   else:
+      return True
+   return False
 
-def overall_loop():
-    counter = (len(stripped_sentence))-1
-    index = 1
-    palindrome(counter, index)
-
-def palindrome(counter, index):
-    """Given length of stripped_sentence checks to see if palindrome"""
-    if counter > 0:
-        if stripped_sentence[index] != stripped_sentence[-(index+1)]:
-            print("That is not a palindrome")
-        else:
-        #stripped_sentence[index] == stripped_sentence[-(index+1)]:
-            palindrome(counter-1, index+1)
-            print(index)
-            print(stripped_sentence[-(index+1)])
-            print(stripped_sentence[(index)])
-            print("That is a palindrome")
-
-stripped_sentence = strip_sentence()
-overall_loop()
+if __name__ == "__main__":
+   answer = is_palindrome(strip_sentence(raw_sentence()))
+   print("ANSWER:")
+   if not answer:
+        print("is not a palindrome")
+   else:
+        print("is a palindrome")
